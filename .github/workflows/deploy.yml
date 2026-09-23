@@ -55,5 +55,3 @@ jobs:
           aws cloudfront create-invalidation \
             --distribution-id "${CLOUDFRONT_DISTRIBUTION_ID}" \
             --paths "/*"
-
-# Trigger production deploy after approved index replacement
