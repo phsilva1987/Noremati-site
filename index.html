@@ -116,18 +116,58 @@
       .booking-card{max-height:calc(100dvh - 24px)}
     }
 
+  
+    /* Premium motion */
+    header{transition:height .28s ease,background-color .28s ease,box-shadow .28s ease,border-color .28s ease}
+    header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 30px rgba(45,33,22,.08);border-bottom-color:rgba(167,122,52,.16)}
+    header.is-scrolled .nav{height:72px}
+    header.is-scrolled .brand img{height:48px}
+    .reveal{opacity:0;transform:translateY(24px) scale(.985);transition:opacity .72s cubic-bezier(.22,1,.36,1),transform .72s cubic-bezier(.22,1,.36,1)}
+    .reveal.is-visible{opacity:1;transform:none}
+    .reveal[data-delay="1"]{transition-delay:.08s}
+    .reveal[data-delay="2"]{transition-delay:.16s}
+    .reveal[data-delay="3"]{transition-delay:.24s}
+    .reveal[data-delay="4"]{transition-delay:.32s}
+    .portrait,.studio-view img,.hero-photo img{transition:transform .7s cubic-bezier(.22,1,.36,1),box-shadow .35s ease}
+    .portrait:hover,.studio-view:hover img{transform:scale(1.025)}
+    .hero-photo img{animation:heroFloat 7s ease-in-out infinite}
+    @keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+    .floating-lead{
+      position:fixed;right:24px;bottom:24px;z-index:45;width:min(360px,calc(100vw - 32px));
+      background:rgba(255,253,248,.97);border:1px solid rgba(167,122,52,.24);border-radius:20px;
+      box-shadow:0 24px 70px rgba(45,33,22,.18);padding:18px 18px 16px;
+      opacity:0;transform:translateY(24px) scale(.97);pointer-events:none;
+      transition:opacity .45s cubic-bezier(.22,1,.36,1),transform .45s cubic-bezier(.22,1,.36,1)
+    }
+    .floating-lead.is-visible{opacity:1;transform:none;pointer-events:auto}
+    .floating-lead__close{position:absolute;top:10px;right:12px;border:0;background:transparent;color:var(--muted);font-size:22px;cursor:pointer}
+    .floating-lead__eyebrow{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}
+    .floating-lead h3{font-size:29px;line-height:1.02;margin:8px 28px 8px 0}
+    .floating-lead p{font-size:13px;line-height:1.5;color:var(--muted);margin:0 0 14px}
+    .floating-lead .btn{width:100%}
+    @media(max-width:620px){
+      .floating-lead{right:12px;left:12px;bottom:86px;width:auto}
+      header.is-scrolled .nav{height:68px}
+      header.is-scrolled .brand img{height:44px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .hero-photo img{animation:none!important}
+      .reveal{opacity:1!important;transform:none!important}
+      .floating-lead{transition:none!important}
+    }
+
   </style>
 </head>
 <body>
 <header><div class="wrap nav"><a class="brand" href="#inicio" aria-label="Noremati Pilates Clássico — início"><img src="assets/img/logo.webp" alt="Noremati Pilates Clássico"></a><ul class="navlinks" id="nav-menu"><li><a href="#inicio">INÍCIO</a></li><li><a href="#linhagem">LINHAGEM</a></li><li><a href="#classico">PILATES CLÁSSICO</a></li><li><a href="#studio">STUDIO</a></li><li><a href="#primeira-aula">PRIMEIRA AULA</a></li><li><a href="#faq">FAQ</a></li></ul><div class="nav-actions"><a class="btn" href="https://wa.me/5511981346510" data-booking-open>AGENDAR AULA</a><button class="nav-toggle" type="button" aria-label="Abrir menu" aria-controls="nav-menu" aria-expanded="false"><span></span><span></span><span></span></button></div></div></header>
 <main>
 <section class="hero" id="inicio"><div class="wrap hero-grid"><div class="hero-copy reveal"><div class="eyebrow">Noremati · Pilates Clássico em Santos</div><h1><span>Pilates Clássico</span><span>com propósito.</span></h1><div class="hero-intro">Movimento com técnica, tradição e acompanhamento próximo.</div><p>Na Ponta da Praia, em Santos, a Noremati oferece uma prática personalizada do Pilates Clássico, conduzida por Fabiana Noremati, com mais de 15 anos de experiência.</p><div class="hero-actions"><a class="btn" href="https://wa.me/5511981346510" data-booking-open>AGENDAR PRIMEIRA AULA</a><a class="btn btn-ghost" href="#classico">CONHECER O MÉTODO</a></div><div class="hero-proof"><span>+15 anos de experiência</span><span>Pilates Clássico</span><span>Atendimento personalizado</span><span>Ponta da Praia</span></div><div class="hero-quote">“Movimento é vida.”<small>Joseph Pilates</small></div><div class="creds"><div class="cred"><div class="icon">✦</div><div><strong>Fisioterapeuta</strong><p>Formação em Fisioterapia e atuação dedicada ao movimento.</p></div></div><div class="cred"><div class="icon">✦</div><div><strong>Pilates Clássico</strong><p>Formação pela Inelia Garcia, discípula direta de Romana Kryzanowska.</p></div></div></div></div><div class="hero-photo reveal"><img src="assets/img/hero-fabiana.webp" alt="Fabiana Noremati no Studio Noremati" width="470" height="500" fetchpriority="high"></div></div></section>
-<section class="lineage" id="linhagem"><div class="wrap"><div class="eyebrow reveal">Uma linhagem que preserva a essência</div><h2 class="reveal">Da origem ao Studio Noremati.</h2><p class="intro reveal">O Pilates Clássico é transmitido de professor para professor. A formação da Fabiana segue uma linhagem diretamente conectada ao trabalho de Joseph Pilates.</p><div class="lineage-grid"><article class="person reveal"><img class="portrait" src="assets/img/joseph-pilates.webp" alt="Joseph Pilates" loading="lazy" decoding="async"><h3>Joseph Pilates</h3><div class="role">O criador</div><p>Criador da Contrologia, sistema que deu origem ao método Pilates.</p></article><article class="person reveal"><img class="portrait" src="assets/img/romana-kryzanowska.webp" alt="Romana Kryzanowska" loading="lazy" decoding="async"><h3>Romana Kryzanowska</h3><div class="role">A guardiã</div><p>Discípula de Joseph Pilates e uma das principais responsáveis por preservar e transmitir o método clássico.</p></article><article class="person reveal"><img class="portrait" src="assets/img/inelia-garcia.webp" alt="Inelia Garcia" loading="lazy" decoding="async"><h3>Inelia Garcia</h3><div class="role">A mestra</div><p>Referência do Pilates Clássico e responsável pela formação da Fabiana.</p></article></div><div class="lineage-end reveal">Joseph → Romana → Inelia → Fabiana</div></div></section>
-<section class="benefits" id="beneficios"><div class="wrap"><div class="section-center reveal"><div class="eyebrow">Movimento que evolui com você</div><h2>Uma prática completa para o corpo.</h2><p>O Pilates Clássico trabalha o corpo de forma integrada, com atenção à qualidade, ao controle e à progressão de cada movimento.</p></div><div class="benefit-grid"><article class="benefit-item reveal"><span>01</span><h3>Força e estabilidade</h3><p>Desenvolvimento do corpo de forma integrada, com controle e consciência.</p></article><article class="benefit-item reveal"><span>02</span><h3>Mobilidade</h3><p>Movimentos conduzidos com precisão, amplitude e respeito às características de cada pessoa.</p></article><article class="benefit-item reveal"><span>03</span><h3>Consciência corporal</h3><p>Mais percepção sobre postura, respiração, alinhamento e qualidade do movimento.</p></article><article class="benefit-item reveal"><span>04</span><h3>Equilíbrio e coordenação</h3><p>Uma prática que integra concentração, controle, fluidez e precisão.</p></article></div></div></section>
+<section class="lineage" id="linhagem"><div class="wrap"><div class="eyebrow reveal">Uma linhagem que preserva a essência</div><h2 class="reveal">Da origem ao Studio Noremati.</h2><p class="intro reveal">O Pilates Clássico é transmitido de professor para professor. A formação da Fabiana segue uma linhagem diretamente conectada ao trabalho de Joseph Pilates.</p><div class="lineage-grid"><article class="person reveal" data-delay="1"><img class="portrait" src="assets/img/joseph-pilates.webp" alt="Joseph Pilates" loading="lazy" decoding="async"><h3>Joseph Pilates</h3><div class="role">O criador</div><p>Criador da Contrologia, sistema que deu origem ao método Pilates.</p></article><article class="person reveal" data-delay="2"><img class="portrait" src="assets/img/romana-kryzanowska.webp" alt="Romana Kryzanowska" loading="lazy" decoding="async"><h3>Romana Kryzanowska</h3><div class="role">A guardiã</div><p>Discípula de Joseph Pilates e uma das principais responsáveis por preservar e transmitir o método clássico.</p></article><article class="person reveal" data-delay="3"><img class="portrait" src="assets/img/inelia-garcia.webp" alt="Inelia Garcia" loading="lazy" decoding="async"><h3>Inelia Garcia</h3><div class="role">A mestra</div><p>Referência do Pilates Clássico e responsável pela formação da Fabiana.</p></article></div><div class="lineage-end reveal">Joseph → Romana → Inelia → Fabiana</div></div></section>
+<section class="benefits" id="beneficios"><div class="wrap"><div class="section-center reveal"><div class="eyebrow">Movimento que evolui com você</div><h2>Uma prática completa para o corpo.</h2><p>O Pilates Clássico trabalha o corpo de forma integrada, com atenção à qualidade, ao controle e à progressão de cada movimento.</p></div><div class="benefit-grid"><article class="benefit-item reveal" data-delay="1"><span>01</span><h3>Força e estabilidade</h3><p>Desenvolvimento do corpo de forma integrada, com controle e consciência.</p></article><article class="benefit-item reveal" data-delay="2"><span>02</span><h3>Mobilidade</h3><p>Movimentos conduzidos com precisão, amplitude e respeito às características de cada pessoa.</p></article><article class="benefit-item reveal" data-delay="3"><span>03</span><h3>Consciência corporal</h3><p>Mais percepção sobre postura, respiração, alinhamento e qualidade do movimento.</p></article><article class="benefit-item reveal" data-delay="4"><span>04</span><h3>Equilíbrio e coordenação</h3><p>Uma prática que integra concentração, controle, fluidez e precisão.</p></article></div></div></section>
 <section class="audience"><div class="wrap audience-grid"><div class="audience-copy reveal"><div class="eyebrow eyebrow--light">Para quem é</div><h2>Cada corpo começa de um ponto diferente.</h2><p>As aulas são conduzidas de acordo com o momento, a experiência e os objetivos de cada aluno — inclusive para quem nunca praticou Pilates.</p><a class="btn" href="https://wa.me/5511981346510" data-booking-open>CONVERSAR COM A FABIANA</a></div><div class="audience-list reveal"><div><strong>Iniciantes</strong><span>Para quem quer começar com acompanhamento próximo.</span></div><div><strong>Adultos e idosos</strong><span>Prática adaptada ao ritmo e à evolução de cada pessoa.</span></div><div><strong>Força e mobilidade</strong><span>Para quem busca desenvolver o corpo de maneira integrada.</span></div><div><strong>Método clássico</strong><span>Para quem procura a tradição e a estrutura original do Pilates.</span></div></div></div></section>
 <section class="classic" id="classico"><div class="wrap classic-grid"><div class="classic-copy reveal"><div class="eyebrow">O método</div><h2>Pilates Clássico, sem atalhos.</h2><p>Uma prática que preserva a lógica, a sequência e os princípios do método original, com acompanhamento próximo e progressão consistente.</p><div class="features"><div class="feature"><strong>Método original</strong><p>Princípios e sequência que respeitam a estrutura clássica.</p></div><div class="feature"><strong>Aparelhos clássicos</strong><p>Reformer, Cadillac, Chair e Barrel integrados à proposta clássica do método.</p></div><div class="feature"><strong>Precisão</strong><p>Qualidade do movimento antes da quantidade de repetições.</p></div><div class="feature"><strong>Acompanhamento</strong><p>Orientação próxima, respeitando o momento e a evolução de cada aluno.</p></div></div></div></div></section>
 <section class="studio" id="studio"><div class="wrap"><div class="studio-head reveal"><div class="eyebrow">Studio Noremati</div><h2>Um espaço para se mover melhor.</h2><p>Na Ponta da Praia, em Santos, o Studio Noremati foi pensado para uma prática atenta, personalizada e acolhedora.</p></div><div class="studio-layout"><div class="studio-view reveal"><img src="assets/img/studio-view.webp" alt="Vista do Studio Noremati na Ponta da Praia, Santos" loading="lazy" decoding="async"></div><div class="studio-panel reveal"><h3>Ponta da Praia · Santos</h3><p>Um ambiente acolhedor e seguro, com estrutura para a prática do Pilates Clássico e acompanhamento individualizado.</p><p>O foco é oferecer uma experiência próxima, respeitando o corpo, o ritmo e os objetivos de cada pessoa.</p><div class="studio-sign">Noremati<small>Pilates Clássico</small></div></div></div></div></section>
-<section class="first-lesson" id="primeira-aula"><div class="wrap"><div class="section-center reveal"><div class="eyebrow">Comece com tranquilidade</div><h2>Sua primeira experiência na Noremati.</h2><p>Um caminho simples para conhecer o studio, entender a proposta e iniciar sua prática.</p></div><div class="steps"><article class="step reveal"><span>01</span><h3>Converse conosco</h3><p>Conte brevemente o que você procura e tire suas primeiras dúvidas.</p></article><article class="step reveal"><span>02</span><h3>Conheça a proposta</h3><p>Entenda como funciona o Pilates Clássico e o acompanhamento da Noremati.</p></article><article class="step reveal"><span>03</span><h3>Inicie sua prática</h3><p>Fabiana conduz o trabalho considerando seu momento, experiência e objetivos.</p></article></div><div class="first-lesson-action reveal"><a class="btn" href="https://wa.me/5511981346510" data-booking-open>AGENDAR PRIMEIRA AULA</a></div></div></section>
+<section class="first-lesson" id="primeira-aula"><div class="wrap"><div class="section-center reveal"><div class="eyebrow">Comece com tranquilidade</div><h2>Sua primeira experiência na Noremati.</h2><p>Um caminho simples para conhecer o studio, entender a proposta e iniciar sua prática.</p></div><div class="steps"><article class="step reveal" data-delay="1"><span>01</span><h3>Converse conosco</h3><p>Conte brevemente o que você procura e tire suas primeiras dúvidas.</p></article><article class="step reveal" data-delay="2"><span>02</span><h3>Conheça a proposta</h3><p>Entenda como funciona o Pilates Clássico e o acompanhamento da Noremati.</p></article><article class="step reveal" data-delay="3"><span>03</span><h3>Inicie sua prática</h3><p>Fabiana conduz o trabalho considerando seu momento, experiência e objetivos.</p></article></div><div class="first-lesson-action reveal"><a class="btn" href="https://wa.me/5511981346510" data-booking-open>AGENDAR PRIMEIRA AULA</a></div></div></section>
 <section class="faq" id="faq"><div class="wrap"><div class="eyebrow reveal">Dúvidas frequentes</div><h2 class="reveal">Antes da sua primeira aula.</h2><div class="faq-list reveal"><details class="faq-item"><summary>Preciso ter experiência prévia com Pilates?</summary><p>Não. As aulas são adaptadas ao nível de cada pessoa, respeitando seu corpo e seu ritmo desde a primeira sessão.</p></details><details class="faq-item"><summary>O que devo vestir? Preciso de tênis?</summary><p>Use roupas confortáveis que permitam liberdade de movimento. O Pilates Clássico é praticado descalço ou com meia antiderrapante.</p></details><details class="faq-item"><summary>Quantas vezes por semana devo praticar?</summary><p>Depende do seu objetivo e da sua rotina. Converse com a Fabiana para uma orientação personalizada.</p></details><details class="faq-item"><summary>Atende crianças e idosos também?</summary><p>Sim. As aulas são personalizadas para adultos, crianças e idosos, sempre respeitando o corpo e o objetivo de cada aluno.</p></details><details class="faq-item"><summary>Qual a diferença do Pilates Clássico?</summary><p>O Pilates Clássico segue a sequência e os princípios originais do método, priorizando precisão, controle e qualidade do movimento.</p></details><details class="faq-item"><summary>Como agendo minha primeira aula?</summary><p>Clique em “Agendar aula” e fale diretamente com a Fabiana pelo WhatsApp.</p></details></div></div></section>
 <section class="cta"><div class="wrap reveal"><div class="eyebrow eyebrow--light">Seu movimento começa aqui</div><h2>Conheça o Studio Noremati.</h2><p>Agende uma aula e conheça o Pilates Clássico Noremati.</p><a class="btn" href="https://wa.me/5511981346510" data-booking-open>AGENDAR PRIMEIRA AULA</a></div></section>
 </main>
@@ -140,5 +180,58 @@ const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecti
 const overlay=document.getElementById('booking-overlay'),closeBtn=document.querySelector('.booking-close');function openBooking(e){e?.preventDefault();overlay.classList.add('open');document.body.style.overflow='hidden';if(typeof gtag==='function')gtag('event','abrir_agendamento')}function closeBooking(){overlay.classList.remove('open');document.body.style.overflow=''}document.querySelectorAll('[data-booking-open]').forEach(a=>a.addEventListener('click',openBooking));closeBtn?.addEventListener('click',closeBooking);overlay?.addEventListener('click',e=>{if(e.target===overlay)closeBooking()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBooking()});
 document.getElementById('booking-form')?.addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('booking-name').value.trim(),phone=document.getElementById('booking-phone').value.trim();const text=encodeURIComponent(`Olá, sou ${name}. Gostaria de agendar minha primeira aula de Pilates Clássico na Noremati. Meu telefone é ${phone}.`);if(typeof gtag==='function')gtag('event','generate_lead',{method:'whatsapp'});window.open(`https://wa.me/5511981346510?text=${text}`,'_blank','noopener')});
 </script>
+
+<div class="floating-lead" id="floatingLead" aria-live="polite">
+  <button class="floating-lead__close" type="button" aria-label="Fechar convite" id="floatingLeadClose">×</button>
+  <div class="floating-lead__eyebrow">Sua prática começa aqui</div>
+  <h3>Conheça o Pilates Clássico.</h3>
+  <p>Agende sua primeira experiência na Noremati e converse diretamente com a Fabiana.</p>
+  <a class="btn" href="https://wa.me/5511981346510" data-booking-open>AGENDAR PELO WHATSAPP</a>
+</div>
+
+
+<script id="premium-motion-init">
+(function(){
+  const header=document.querySelector('header');
+  const onScroll=()=>header&&header.classList.toggle('is-scrolled',window.scrollY>24);
+  onScroll();
+  window.addEventListener('scroll',onScroll,{passive:true});
+
+  const revealEls=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver((entries,obs)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    },{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+    revealEls.forEach(el=>io.observe(el));
+  }else{
+    revealEls.forEach(el=>el.classList.add('is-visible'));
+  }
+
+  const lead=document.getElementById('floatingLead');
+  const leadClose=document.getElementById('floatingLeadClose');
+  const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let shown=false;
+  const showLead=()=>{
+    if(!lead||shown||sessionStorage.getItem('norematiLeadDismissed'))return;
+    shown=true;
+    lead.classList.add('is-visible');
+  };
+  const maybeShow=()=>{
+    if(window.scrollY>Math.max(420,document.documentElement.scrollHeight*.22)) showLead();
+  };
+  setTimeout(()=>{if(!reduced)showLead();},9000);
+  window.addEventListener('scroll',maybeShow,{passive:true});
+  leadClose&&leadClose.addEventListener('click',()=>{
+    lead.classList.remove('is-visible');
+    sessionStorage.setItem('norematiLeadDismissed','1');
+  });
+})();
+</script>
+
 </body>
 </html>
