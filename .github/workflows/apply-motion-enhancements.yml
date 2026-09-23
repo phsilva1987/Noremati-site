@@ -16,14 +16,13 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Apply approved motion patch
-        shell: python
+        shell: python {0}
         run: |
           from pathlib import Path
 
           path = Path('index.html')
           html = path.read_text(encoding='utf-8')
 
-          # Rodapé: manter apenas o ícone do Instagram.
           html = html.replace('        <a href="https://www.instagram.com/norematipilates/" target="_blank" rel="noopener" aria-label="Instagram Noremati">@norematipilates</a>\n', '')
 
           css = r'''
@@ -60,9 +59,8 @@ jobs:
     }
 '''
 
-          marker = '\n</style>'
           if 'Motion enhancements — preserva layout' not in html:
-              html = html.replace(marker, css + marker, 1)
+              html = html.replace('\n</style>', css + '\n</style>', 1)
 
           js = r'''
 
@@ -73,12 +71,10 @@ jobs:
   const navLinks = Array.from(document.querySelectorAll('.navlinks a[href^="#"]'));
   const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
-  // Header ganha profundidade somente depois do início da rolagem.
   const updateHeader = () => header && header.classList.toggle('is-scrolled', window.scrollY > 10);
   updateHeader();
   window.addEventListener('scroll', updateHeader, {passive:true});
 
-  // Navegação com easing mais natural e compensação do header sticky.
   if(!reduceMotion){
     anchorLinks.forEach(link => {
       link.addEventListener('click', function(e){
@@ -95,30 +91,24 @@ jobs:
     });
   }
 
-  // Scrollspy contínuo: o menu acompanha a seção atual sem saltos visuais.
   const sections = navLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
   const syncActive = () => {
     if(!sections.length) return;
     const offset = (header ? header.offsetHeight : 0) + 90;
     let current = sections[0];
-    sections.forEach(section => {
-      if(section.getBoundingClientRect().top <= offset) current = section;
-    });
+    sections.forEach(section => { if(section.getBoundingClientRect().top <= offset) current = section; });
     navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + current.id));
   };
   syncActive();
   window.addEventListener('scroll', syncActive, {passive:true});
 
-  // Entrada única e discreta do WhatsApp flutuante.
   const whatsapp = document.querySelector('.whatsapp-float');
-  if(whatsapp && !reduceMotion){
-    requestAnimationFrame(() => whatsapp.classList.add('motion-ready'));
-  }
+  if(whatsapp && !reduceMotion){ requestAnimationFrame(() => whatsapp.classList.add('motion-ready')); }
 })();
 </script>
 '''
 
-          if 'whatsappEntrance' not in html.split('</style>', 1)[-1]:
+          if 'const reduceMotion' not in html:
               html = html.replace('\n</body>', js + '\n</body>', 1)
 
           path.write_text(html, encoding='utf-8')
