@@ -14,28 +14,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Patch footer and WhatsApp
+      - name: Fix floating WhatsApp icon
         run: |
           python3 <<'PY'
           from pathlib import Path
+          import re
+
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
 
-          # Remove the textual Instagram handle from the footer, keeping only the icon link.
-          s = s.replace('        <a href="https://www.instagram.com/norematipilates/" target="_blank" rel="noopener" aria-label="Instagram Noremati">@norematipilates</a>\n', '')
-
-          # Replace the simplified WhatsApp drawing with the recognizable official-style glyph.
-          old = '''  <svg viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true">
-    <path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.45L3 20l1.1-4.65A8.5 8.5 0 1 1 20.5 11.5Z"/>
-    <path d="M8.5 8.5c.5 2 2.5 4 4.5 5l1.5-1"/>
+          # Keep footer/layout untouched. Replace only the SVG inside the floating WhatsApp button.
+          official_icon = '''<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.149-.173.198-.297.298-.495.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.009-.371-.011-.57-.011-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.875 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.693.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26C2.169 6.455 6.596 2.03 12.04 2.03c2.637 0 5.116 1.028 6.978 2.893a9.825 9.825 0 0 1 2.889 6.988c-.003 5.44-4.43 9.866-9.856 9.866m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.14 1.588 5.945L.056 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.478-8.413Z"/>
   </svg>'''
-          new = '''  <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-    <path fill="currentColor" stroke="none" d="M16.04 3C8.85 3 3 8.75 3 15.82c0 2.26.6 4.47 1.75 6.4L3 28.62l6.62-1.7a13.15 13.15 0 0 0 6.41 1.63h.01C23.23 28.55 29 22.8 29 15.73 29 8.68 23.23 3 16.04 3Zm0 23.39h-.01a10.98 10.98 0 0 1-5.6-1.52l-.4-.23-3.93 1.01 1.05-3.77-.26-.39a10.55 10.55 0 0 1-1.68-5.67c0-5.87 4.86-10.65 10.84-10.65 5.97 0 10.82 4.73 10.82 10.56 0 5.88-4.86 10.66-10.83 10.66Zm5.94-7.98c-.33-.16-1.92-.93-2.22-1.04-.3-.1-.52-.16-.74.16-.22.32-.85 1.04-1.04 1.25-.19.21-.38.24-.71.08-.33-.16-1.38-.5-2.63-1.58a9.78 9.78 0 0 1-1.82-2.23c-.19-.32-.02-.5.14-.66.15-.14.33-.37.49-.56.16-.18.22-.32.33-.53.11-.21.05-.4-.03-.56-.08-.16-.74-1.76-1.02-2.41-.27-.65-.54-.56-.74-.57h-.63c-.22 0-.57.08-.87.4-.3.32-1.15 1.11-1.15 2.7s1.18 3.13 1.34 3.34c.16.21 2.32 3.49 5.62 4.89.79.33 1.4.53 1.88.68.79.25 1.5.21 2.07.13.63-.09 1.92-.77 2.19-1.51.27-.74.27-1.38.19-1.51-.08-.13-.3-.21-.63-.37Z"/>
-  </svg>'''
-          s = s.replace(old, new)
 
-          # Refine the floating button dimensions and icon rendering without changing its position/behavior.
-          s = s.replace('.whatsapp-float svg{width:25px;height:25px;stroke:currentColor;fill:none}', '.whatsapp-float svg{width:29px;height:29px;display:block;fill:currentColor;stroke:none}')
+          pattern = r'(<a class="whatsapp-float"[^>]*>\s*)<svg[\s\S]*?</svg>(\s*</a>)'
+          s, count = re.subn(pattern, lambda m: m.group(1) + official_icon + m.group(2), s, count=1)
+          if count != 1:
+              raise SystemExit('Floating WhatsApp button not found; no changes applied.')
+
+          # Solid official glyph, centered and visually balanced.
+          s = re.sub(r'\.whatsapp-float svg\{[^}]*\}', '.whatsapp-float svg{width:27px;height:27px;display:block;fill:currentColor;stroke:none}', s, count=1)
 
           p.write_text(s, encoding='utf-8')
           PY
@@ -45,5 +44,5 @@ jobs:
           git config user.email github-actions@github.com
           git add index.html
           git diff --cached --quiet && exit 0
-          git commit -m "fix: improve WhatsApp icon and remove Instagram handle"
+          git commit -m "fix: use official WhatsApp glyph on floating button"
           git push
