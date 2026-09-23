@@ -1,0 +1,46 @@
+name: Apply Noremati final index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.deploy/index.gz.b64'
+      - '.github/workflows/apply-noremati-final.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Restore approved index
+        shell: bash
+        run: |
+          base64 -d .deploy/index.gz.b64 | gzip -d > index.html
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          s=s.replace('"name": "Como faço para agendar minha primeira aula?",\n        "acceptedAnswer": { "@type": "Answer", "text": "É simples: clique em \\"Falar com a Fabiana\\" e converse diretamente pelo WhatsApp para tirar dúvidas e combinar o melhor dia e horário para você." }','"name": "Como faço para agendar minha aula grátis?",\n        "acceptedAnswer": { "@type": "Answer", "text": "É simples: clique em \\"Agende sua aula grátis\\" e fale diretamente com a Fabiana pelo WhatsApp para combinar o melhor dia e horário." }')
+          p.write_text(s)
+          PY
+      - name: Validate approved changes
+        shell: bash
+        run: |
+          grep -q 'AGENDE SUA AULA GRÁTIS' index.html
+          grep -q 'CONHECER O PILATES CLÁSSICO' index.html
+          grep -q 'Como faço para agendar minha aula grátis?' index.html
+          if grep -A4 'hero-actions' index.html | grep -q 'btn-ghost'; then echo 'Unexpected secondary hero CTA'; exit 1; fi
+      - name: Commit index
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          if git diff --cached --quiet; then echo 'No index changes'; exit 0; fi
+          git commit -m 'Improve Noremati conversion journey'
+          git push
