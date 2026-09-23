@@ -1,113 +1,42 @@
 # Noremati | Pilates Clássico — Site Oficial
 
-> **PROJECT SOURCE OF TRUTH**
->
-> Este documento registra o contexto aprovado do projeto. Antes de mudanças significativas, inspecione a implementação existente. Preserve identidade visual, conteúdo aprovado e funcionalidades existentes. O código funcional é a fonte técnica de verdade.
+Site oficial da **Noremati | Pilates Clássico**, com foco em Pilates Clássico, experiência premium, SEO local e geração de novos alunos.
 
-## 1. Produto
+## Objetivo
+Apresentar o trabalho da Noremati, reforçar o diferencial do método clássico, gerar autoridade e facilitar o agendamento de potenciais alunos.
 
-Site oficial da **Noremati | Pilates Clássico**, projeto voltado ao Pilates Clássico com posicionamento refinado e foco na autenticidade do método.
+## Direção do projeto
+- Identidade elegante, clássica e contemporânea.
+- Layout responsivo para desktop, tablet e mobile.
+- Preservar o logotipo oficial e a identidade dourada Noremati.
+- Evitar aparência genérica de academia e elementos incompatíveis com Pilates Clássico.
+- Desenvolvimento incremental: PATCH > REWRITE e REUSE > RECREATE.
 
-## 2. Objetivo de negócio
+## Estrutura planejada
+- `index.html` — página principal.
+- `assets/img/` — imagens e identidade visual.
+- `robots.txt` — diretivas para buscadores.
+- `sitemap.xml` — sitemap do domínio.
 
-Apresentar o trabalho da Noremati, reforçar o diferencial do Pilates Clássico, gerar autoridade e facilitar o contato de potenciais alunos/clientes.
+## SEO e conversão
+A implementação foi preparada para trabalhar com:
+- SEO local para Pilates Clássico em Santos e Ponta da Praia.
+- Open Graph e dados estruturados Schema.org.
+- FAQ estruturado.
+- CTAs para primeira aula e WhatsApp.
+- Eventos de conversão preparados para Google Analytics 4.
 
-## 3. Profissional
+## Antes da produção
+1. Substituir `G-XXXXXXXXXX` pelo Measurement ID real do GA4.
+2. Confirmar endereço completo e horário de atendimento antes de adicioná-los ao Schema.org.
+3. Validar `noremati.com` no Google Search Console.
+4. Enviar `https://noremati.com/sitemap.xml` ao Search Console.
+5. Validar Google Business Profile e consistência dos dados locais.
 
-A atuação está associada à **Fabiana Noremati**, fisioterapeuta com CREFITO válido. Não inventar credenciais, especializações ou números que não estejam confirmados.
-
-## 4. Branding
-
-Nome oficial do perfil/marca:
-
-**Noremati | Pilates Clássico**
-
-Preservar o logotipo oficial aprovado e suas versões oficiais. A identidade deve ser elegante, clássica, sofisticada e coerente com o posicionamento do estúdio.
-
-Não usar elementos visuais que descaracterizem Pilates Clássico.
-
-## 5. Direção visual
-
-- Elegante e refinada.
-- Clássica com acabamento contemporâneo.
-- Uso cuidadoso de dourado e tons compatíveis com a identidade aprovada.
-- Layout limpo, premium e responsivo.
-- Evitar aparência genérica de academia/fitness.
-- Evitar excesso de acessórios ou elementos decorativos não relacionados ao Pilates Clássico.
-
-## 6. Conteúdo
-
-O conteúdo pode reforçar:
-
-- Pilates Clássico;
-- história e fundamentos do método;
-- Joseph Pilates;
-- Romana Kryzanowska;
-- diferenciais do atendimento;
-- informações do estúdio e contato quando presentes no projeto.
-
-Para materiais históricos, não apresentar imagens geradas como se fossem fotografias reais de pessoas históricas.
-
-## 7. Equipamentos e linguagem do método
-
-Quando houver referência a equipamentos, manter coerência com Pilates Clássico. Equipamentos já trabalhados no projeto incluem:
-
-- Reformer;
-- Cadillac;
-- Step Chair;
-- Barrel.
-
-Evitar bolas e acessórios que conflitem com a identidade de Pilates Clássico quando usados como representação principal da marca.
-
-## 8. Arquitetura técnica
-
-O repositório ainda não contém a implementação oficial. Não inventar stack, backend ou banco antes da entrada/análise do código real.
-
-O domínio associado ao projeto é `noremati.com`; validar configuração técnica real antes de documentar hospedagem ou infraestrutura.
-
-## 9. Responsividade
-
-Toda implementação deve funcionar em desktop, tablet e mobile, preservando:
-
-- legibilidade;
-- proporção do logo;
-- imagens;
-- CTAs;
-- navegação;
-- formulários quando existirem.
-
-## 10. Segurança
-
-- Não expor secrets/tokens.
+## Segurança
+- Não publicar secrets, tokens ou credenciais.
+- Não inventar credenciais profissionais.
 - Não publicar dados pessoais desnecessários.
-- Formulários devem tratar entrada e erros corretamente.
-- Integrações devem usar configuração segura.
-
-## 11. Restrições críticas
-
-**DO NOT:**
-
-- descaracterizar Pilates Clássico;
-- substituir o logo oficial por aproximações;
-- usar bolas como elemento principal da identidade;
-- inventar credenciais ou informações profissionais;
-- criar conteúdo visual genérico de academia;
-- redesenhar áreas aprovadas sem solicitação;
-- adicionar dependências sem necessidade.
-
-## 12. Status atual
-
-Repositório preparado para receber a implementação oficial do site.
-
-### A validar após entrada do código
-
-- stack atual;
-- assets oficiais;
-- conteúdo publicado;
-- formulários/contato;
-- SEO;
-- analytics;
-- domínio/deploy.
 
 ---
 
