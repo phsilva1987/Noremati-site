@@ -258,24 +258,27 @@
     }
 
     /* Footer */
-    .site-footer{background:#fffdf8}
-    .footer-light{background:#f7f2e8;border-top:1px solid #e6ddcf}
-    .footer-light-wrap{max-width:1320px;margin:0 auto;padding:28px 6vw;display:grid;grid-template-columns:.9fr 1.35fr 1.15fr;gap:36px;align-items:center}
+    .site-footer{background:#f7f2e8;border-top:1px solid #e6ddcf}
+    .footer-light{background:#f7f2e8}
+    .footer-light-wrap{max-width:1320px;margin:0 auto;padding:36px 6vw 30px;display:grid;grid-template-columns:.9fr 1.35fr 1.15fr;gap:40px;align-items:center}
     .footer-light-brand{display:flex;flex-direction:column;justify-content:center}
-    .footer-light-brand-name{font-family:"Cormorant Garamond",serif;font-size:34px;line-height:1;color:#a87b33;font-weight:600}
-    .footer-light-brand-sub{margin-top:6px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#b89054}
-    .footer-light-menu{display:flex;justify-content:center;align-items:center;gap:26px;flex-wrap:wrap}
-    .footer-light-menu a,.footer-light-contact a{color:#2d241c;text-decoration:none;font-size:13px}
+    .footer-light-brand-name{font-family:"Cormorant Garamond",serif;font-size:38px;line-height:.95;color:#a87b33;font-weight:600}
+    .footer-light-brand-sub{margin-top:7px;font-size:10px;letter-spacing:.30em;text-transform:uppercase;color:#b89054}
+    .footer-light-menu{display:flex;justify-content:center;align-items:center;gap:28px;row-gap:14px;flex-wrap:wrap}
+    .footer-light-menu a,.footer-light-contact a{color:#2d241c;text-decoration:none;font-size:13px;transition:color .2s ease}
     .footer-light-menu a:hover,.footer-light-contact a:hover{color:#a87b33}
-    .footer-light-contact{display:flex;justify-content:flex-end;align-items:center;gap:14px;flex-wrap:wrap;font-size:13px;color:#2d241c}
-    .footer-light-contact .contact-location{margin-right:4px}
+    .footer-light-contact{display:flex;justify-content:flex-end;align-items:center;gap:18px;flex-wrap:wrap;font-size:13px;color:#2d241c}
+    .footer-light-contact .contact-location{font-weight:500;white-space:nowrap}
     .footer-light-social{display:flex;align-items:center;gap:10px}
-    .footer-light-social a{width:36px;height:36px;border:1px solid #c9aa7b;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#8e672f;background:#fffaf2;transition:.2s ease}
-    .footer-light-social a:hover{background:#8e672f;color:#fff;transform:translateY(-1px)}
-    .footer-light-social svg{width:17px;height:17px;stroke:currentColor}
-    .footer-dark-minimal{background:#2b2117;color:#c8b9a7}
-    .footer-dark-wrap{max-width:1320px;margin:0 auto;padding:16px 6vw 18px;display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:12px}
-    .footer-dark-signature{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:16px;color:#d7c2a7}
+    .footer-light-social a{width:40px;height:40px;border:1px solid #c9aa7b;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#8e672f;background:#fffaf2;transition:background .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease}
+    .footer-light-social a:hover{background:#8e672f;color:#fff;transform:translateY(-2px);box-shadow:0 8px 20px rgba(112,78,27,.18)}
+    .footer-light-social svg{width:18px;height:18px;stroke:currentColor}
+    .footer-dark-minimal{background:#f7f2e8;color:#8b7b69;border-top:1px solid #e4d8c6}
+    .footer-dark-wrap{max-width:1320px;margin:0 auto;padding:14px 6vw 18px;display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:11px}
+    .footer-dark-signature{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:15px;color:#9a7744}
+    .whatsapp-float{position:fixed;right:22px;bottom:22px;z-index:60;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#8f6a2e;color:#fff;text-decoration:none;box-shadow:0 12px 28px rgba(72,49,18,.28);transition:transform .2s ease,box-shadow .2s ease}
+    .whatsapp-float:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 16px 34px rgba(72,49,18,.34)}
+    .whatsapp-float svg{width:25px;height:25px;stroke:currentColor;fill:none}
     .mobile-cta{display:none}
 
     /* Booking modal */
@@ -367,6 +370,7 @@
       .footer-light-wrap{padding:28px 7vw;gap:24px}
       .footer-light-contact{flex-direction:column;gap:10px}
       .footer-dark-wrap{padding:15px 7vw 18px}
+      .whatsapp-float{display:none}
       .mobile-cta{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:50;justify-content:center;background:var(--gold-btn);color:#fff;text-decoration:none;border-radius:999px;padding:15px;font-weight:700;box-shadow:0 12px 30px rgba(0,0,0,.22)}
     }
   
@@ -634,6 +638,7 @@
 
       <div class="footer-light-contact">
         <span class="contact-location">Ponta da Praia · Santos · SP</span>
+        <a href="https://www.instagram.com/norematipilates/" target="_blank" rel="noopener" aria-label="Instagram Noremati">@norematipilates</a>
         <div class="footer-light-social">
           <a href="https://www.instagram.com/norematipilates/" target="_blank" rel="noopener" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true">
@@ -660,6 +665,13 @@
     </div>
   </div>
 </footer>
+
+<a class="whatsapp-float" href="https://wa.me/5511981346510" data-booking-open aria-label="Falar com a Fabiana pelo WhatsApp" title="WhatsApp">
+  <svg viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true">
+    <path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.45L3 20l1.1-4.65A8.5 8.5 0 1 1 20.5 11.5Z"/>
+    <path d="M8.5 8.5c.5 2 2.5 4 4.5 5l1.5-1"/>
+  </svg>
+</a>
 
 <a class="mobile-cta" href="https://wa.me/5511981346510" data-booking-open>FALAR COM A FABIANA</a>
 
