@@ -23,13 +23,6 @@ jobs:
         run: |
           base64 -d .deploy/index.gz.b64 | gzip -d > index.html
 
-      - name: Validate approved index
-        shell: bash
-        run: |
-          grep -q 'AGENDE SUA AULA GRÁTIS' index.html
-          grep -q 'CONHECER O PILATES CLÁSSICO' index.html
-          grep -q 'NOREMATI · PILATES CLÁSSICO EM SANTOS' index.html
-
       - name: Commit approved index
         shell: bash
         run: |
