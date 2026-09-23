@@ -380,6 +380,29 @@
     @media(max-width:900px){.trust-grid{grid-template-columns:1fr 1fr}}
     @media(max-width:620px){.conversion-trust{padding:60px 0}.trust-grid{grid-template-columns:1fr}.trust-item{padding:20px 18px}}
 
+/* Premium motion patch */
+:root{--motion-ease:cubic-bezier(.22,1,.36,1)}
+header{transition:background-color .35s var(--motion-ease),box-shadow .35s var(--motion-ease),border-color .35s var(--motion-ease)}
+header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba(51,38,23,.08);border-bottom-color:rgba(167,122,52,.18)}
+.navlinks a{position:relative;transition:color .28s var(--motion-ease),background-color .28s var(--motion-ease),box-shadow .28s var(--motion-ease),transform .28s var(--motion-ease)}
+.navlinks a:hover{transform:translateY(-1px)}
+.navlinks a::after{content:"";position:absolute;left:18px;right:18px;bottom:4px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:center;transition:transform .32s var(--motion-ease)}
+.navlinks a.active::after,.navlinks a:hover::after{transform:scaleX(1)}
+.btn{transition:transform .3s var(--motion-ease),box-shadow .3s var(--motion-ease),background-color .3s var(--motion-ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(112,78,27,.24)}
+.portrait,.hero-photo img,.studio-view img{transition:transform .7s var(--motion-ease),box-shadow .7s var(--motion-ease)}
+@media(hover:hover) and (pointer:fine){.person:hover .portrait{transform:translateY(-4px) scale(1.012);box-shadow:0 24px 48px rgba(51,38,23,.13)}.hero-photo:hover img{transform:scale(1.012)}.studio-view:hover img{transform:scale(1.018)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .85s var(--motion-ease),transform .85s var(--motion-ease)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+.benefit-grid .reveal:nth-child(2),.steps .reveal:nth-child(2),.trust-grid .reveal:nth-child(2){transition-delay:.08s}
+.benefit-grid .reveal:nth-child(3),.steps .reveal:nth-child(3),.trust-grid .reveal:nth-child(3){transition-delay:.16s}
+.benefit-grid .reveal:nth-child(4),.trust-grid .reveal:nth-child(4){transition-delay:.24s}
+.whatsapp-float.motion-ready{animation:whatsappEntrance .65s var(--motion-ease) both}
+.whatsapp-float.motion-ready::after{content:"";position:absolute;inset:-5px;border:1px solid rgba(143,106,46,.32);border-radius:50%;animation:whatsappPulse 1.8s ease-out 1 .7s;pointer-events:none}
+@keyframes whatsappEntrance{from{opacity:0;transform:translateY(14px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes whatsappPulse{0%{opacity:.8;transform:scale(.88)}100%{opacity:0;transform:scale(1.45)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}header,.navlinks a,.btn,.portrait,.hero-photo img,.studio-view img,.reveal,.whatsapp-float{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
+
 </style>
 </head>
 <body>
@@ -638,7 +661,6 @@
 
       <div class="footer-light-contact">
         <span class="contact-location">Ponta da Praia · Santos · SP</span>
-        <a href="https://www.instagram.com/norematipilates/" target="_blank" rel="noopener" aria-label="Instagram Noremati">@norematipilates</a>
         <div class="footer-light-social">
           <a href="https://www.instagram.com/norematipilates/" target="_blank" rel="noopener" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true">
@@ -816,6 +838,21 @@
     }, { threshold: 0.15 });
     revealEls.forEach(el => io.observe(el));
   }
+})();
+</script>
+
+<script>
+(function(){
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const header=document.querySelector('header');
+  const navLinks=Array.from(document.querySelectorAll('.navlinks a[href^="#"]'));
+  const updateHeader=()=>header&&header.classList.toggle('is-scrolled',window.scrollY>10);
+  updateHeader();window.addEventListener('scroll',updateHeader,{passive:true});
+  if(!reduceMotion){document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',function(e){const href=this.getAttribute('href');if(!href||href==='#')return;const target=document.querySelector(href);if(!target)return;e.preventDefault();const hh=header?header.offsetHeight:0;window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-hh+1,behavior:'smooth'});history.replaceState(null,'',href)}))}
+  const sections=navLinks.map(l=>document.querySelector(l.getAttribute('href'))).filter(Boolean);
+  const syncActive=()=>{if(!sections.length)return;const offset=(header?header.offsetHeight:0)+90;let current=sections[0];sections.forEach(sec=>{if(sec.getBoundingClientRect().top<=offset)current=sec});navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+current.id))};
+  syncActive();window.addEventListener('scroll',syncActive,{passive:true});
+  const wa=document.querySelector('.whatsapp-float');if(wa&&!reduceMotion)requestAnimationFrame(()=>wa.classList.add('motion-ready'));
 })();
 </script>
 
