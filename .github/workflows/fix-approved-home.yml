@@ -1,0 +1,55 @@
+name: Fix approved Noremati home
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-approved-home.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply approved header and hero
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+
+          old_header = '''<header><div class="wrap nav"><a class="brand" href="#inicio" aria-label="Noremati Pilates Clássico — início"><img src="assets/img/logo.webp" alt="Noremati Pilates Clássico"></a><ul class="navlinks" id="nav-menu"><li><a href="#inicio">INÍCIO</a></li><li><a href="#linhagem">LINHAGEM</a></li><li><a href="#classico">PILATES CLÁSSICO</a></li><li><a href="#studio">STUDIO</a></li><li><a href="#primeira-aula">PRIMEIRA AULA</a></li><li><a href="#faq">FAQ</a></li></ul><div class="nav-actions"><a class="btn" href="https://wa.me/5511981346510" data-booking-open>AGENDAR AULA</a><button class="nav-toggle" type="button" aria-label="Abrir menu" aria-controls="nav-menu" aria-expanded="false"><span></span><span></span><span></span></button></div></div></header>'''
+          new_header = '''<header><div class="wrap nav"><a class="brand" href="#inicio" aria-label="Noremati Pilates Clássico — início"><img src="assets/img/logo.webp" alt="Noremati Pilates Clássico"></a><ul class="navlinks" id="nav-menu"><li><a class="active" href="#inicio">SOBRE</a></li><li><a href="#linhagem">LINHAGEM</a></li><li><a href="#classico">PILATES CLÁSSICO</a></li><li><a href="#studio">STUDIO</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contato">CONTATO</a></li></ul><div class="nav-actions"><a class="btn" href="https://wa.me/5511981346510" data-booking-open>◉ AGENDE SUA AULA GRÁTIS</a><button class="nav-toggle" type="button" aria-label="Abrir menu" aria-controls="nav-menu" aria-expanded="false"><span></span><span></span><span></span></button></div></div></header>'''
+
+          old_hero_start = '<section class="hero" id="inicio">'
+          lineage_start = '<section class="lineage" id="linhagem">'
+          i = s.find(old_hero_start)
+          j = s.find(lineage_start)
+          if i < 0 or j < 0 or j <= i:
+              raise SystemExit('Hero/lineage anchors not found; no changes applied.')
+
+          new_hero = '''<section class="hero" id="inicio"><div class="wrap hero-grid"><div class="hero-copy reveal"><div class="eyebrow">Noremati · Pilates Clássico em Santos</div><h1><span>Pilates Clássico</span><span>com propósito.</span></h1><div class="hero-intro">Movimento com técnica, tradição e acompanhamento próximo.</div><p>Na Ponta da Praia, em Santos, a Noremati oferece uma prática personalizada do Pilates Clássico, conduzida por Fabiana Noremati, com mais de 15 anos de experiência.</p><div class="hero-actions"><a class="btn" href="#classico">CONHECER O PILATES CLÁSSICO</a></div><div class="hero-proof"><span>+15 anos de experiência</span><span>Pilates Clássico</span><span>Atendimento personalizado</span><span>Ponta da Praia</span></div><div class="creds"><div class="cred"><div class="icon"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg></div><div><strong>Formação</strong><p>Formação em Pilates Clássico com Inelia Garcia, integrante da 3ª geração da linhagem do método, com aprendizagem transmitida por Romana Kryzanowska, discípula direta de Joseph Pilates.</p></div></div><div class="cred"><div class="icon"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.3 2 4.8 5.4 4.1 7.7 3.7 10 4.9 12 7c2-2.1 4.3-3.3 6.6-2.9 3.4.7 5 4.2 3.4 7.7C19.5 16.4 12 21 12 21Z"/></svg></div><div><strong>Atendimento personalizado</strong><p>Aulas individuais e em pequenos grupos, respeitando seu corpo, seus objetivos e seu tempo.</p></div></div></div></div><div class="hero-photo reveal"><img src="assets/img/hero-fabiana.webp" alt="Fabiana Noremati no Studio Noremati" width="470" height="500" fetchpriority="high"></div></div></section>\n'''
+
+          if old_header not in s:
+              raise SystemExit('Expected current header not found; no changes applied.')
+          s = s.replace(old_header, new_header, 1)
+          i = s.find(old_hero_start)
+          j = s.find(lineage_start)
+          s = s[:i] + new_hero + s[j:]
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit approved index
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "No changes needed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "fix: restore approved Noremati home layout"
+          git push
