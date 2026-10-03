@@ -175,15 +175,39 @@
     .lineage{text-align:center;background:#fffaf1}
     .lineage h2{font-size:56px;margin:8px auto 12px}
     .lineage .intro{max-width:900px;margin:0 auto 52px;color:var(--muted);line-height:1.55}
-    .lineage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:58px;align-items:start}
-    .person{position:relative}
-    .person:not(:last-child)::after{content:"";position:absolute;right:-42px;top:150px;width:28px;height:1px;background:var(--gold)}
-    .portrait{width:100%;aspect-ratio:1.3/1;border-radius:18px;object-fit:cover;object-position:center 32%;box-shadow:0 18px 40px rgba(51,38,23,.09)}
-    .person:nth-child(1) .portrait,.person:nth-child(2) .portrait{object-position:center top}
-    .person h3{font-size:32px;margin-top:18px}
+    .lineage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;align-items:stretch}
+    .person{position:relative;display:flex;flex-direction:column;min-height:100%;padding-bottom:8px}
+    .person:not(:last-child)::after{content:"";position:absolute;right:-26px;top:170px;width:14px;height:1px;background:rgba(167,122,52,.55)}
+    .portrait-wrap{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 18px 42px rgba(51,38,23,.10);background:#e9decd}
+    .portrait{width:100%;aspect-ratio:4/3;border-radius:0;object-fit:cover;object-position:center 25%;filter:grayscale(100%) sepia(8%) contrast(1.04);transition:transform .55s var(--motion-ease),filter .35s ease}
+    .person:nth-child(1) .portrait{object-position:center 18%}
+    .person:nth-child(2) .portrait{object-position:center 18%}
+    .person:nth-child(3) .portrait{object-position:center 18%}
+    .person:hover .portrait{transform:scale(1.025);filter:grayscale(100%) sepia(10%) contrast(1.06)}
+    .person h3{font-size:32px;margin-top:20px}
     .role{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:6px 0 12px;font-weight:600}
-    .person p{color:var(--muted);font-size:14px;line-height:1.5;max-width:290px;margin:0 auto}
+    .person p{color:var(--muted);font-size:14px;line-height:1.55;max-width:320px;margin:0 auto}
+    .lineage-more{margin-top:auto;padding-top:18px}
+    .lineage-more button{appearance:none;border:0;background:transparent;color:var(--gold-btn);font:600 12px/1 Inter,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:10px 6px;border-bottom:1px solid rgba(167,122,52,.45);transition:color .2s ease,border-color .2s ease,transform .2s ease}
+    .lineage-more button:hover{color:#6f4f22;border-color:var(--gold);transform:translateY(-1px)}
     .lineage-end{font-family:"Cormorant Garamond",serif;font-size:34px;font-style:italic;color:var(--gold);margin-top:48px}
+
+    /* Lineage gallery modal */
+    .lineage-modal{position:fixed;inset:0;z-index:10020;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(25,18,13,.72);backdrop-filter:blur(7px)}
+    .lineage-modal.is-open{display:flex}
+    .lineage-modal-card{position:relative;width:min(980px,96vw);max-height:92vh;overflow:auto;background:#fffaf2;border-radius:24px;box-shadow:0 30px 90px rgba(0,0,0,.35)}
+    .lineage-modal-close{position:absolute;top:16px;right:16px;z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid #dbc7aa;background:rgba(255,250,242,.94);color:#6f5331;font-size:24px;line-height:1;cursor:pointer}
+    .lineage-modal-grid{display:grid;grid-template-columns:1.2fr .8fr;min-height:560px}
+    .lineage-gallery{position:relative;background:#211812;min-height:560px;overflow:hidden;border-radius:24px 0 0 24px}
+    .lineage-gallery img{width:100%;height:100%;min-height:560px;max-height:76vh;object-fit:contain;background:#211812}
+    .lineage-gallery-nav{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 16px;pointer-events:none}
+    .lineage-gallery-nav button{pointer-events:auto;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(30,21,15,.55);color:#fff;font-size:24px;cursor:pointer;backdrop-filter:blur(4px)}
+    .lineage-gallery-count{position:absolute;left:18px;bottom:16px;padding:7px 10px;border-radius:999px;background:rgba(30,21,15,.58);color:#fff;font-size:11px;letter-spacing:.08em}
+    .lineage-modal-copy{padding:56px 42px 42px;text-align:left;display:flex;flex-direction:column;justify-content:center}
+    .lineage-modal-copy .role{margin:8px 0 18px}
+    .lineage-modal-copy h3{font-family:"Cormorant Garamond",serif;font-size:46px;line-height:.95;margin:0}
+    .lineage-modal-copy p{color:var(--muted);font-size:15px;line-height:1.7;margin:0}
+    .lineage-modal-caption{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:#8b7862}
 
     /* Classic */
     .classic{background:var(--paper)}
@@ -384,6 +408,11 @@
       .hero-support-grid .cred:last-child{grid-column:1/-1}
       .lineage-grid,.studio-layout,.cta-grid{grid-template-columns:1fr}
       .person:not(:last-child)::after{display:none}
+      .lineage-grid{gap:42px}
+      .lineage-modal-grid{grid-template-columns:1fr}
+      .lineage-gallery{min-height:420px;border-radius:24px 24px 0 0}
+      .lineage-gallery img{min-height:420px;max-height:58vh}
+      .lineage-modal-copy{padding:34px 30px 32px}
       .features{grid-template-columns:1fr 1fr}
       .cta-photo{min-height:240px}
       .footer-dark-wrap{flex-direction:column;align-items:flex-start}
@@ -405,7 +434,14 @@
       .lineage h2,.classic h2,.studio-head h2,.faq h2{font-size:40px}
       .faq-item summary{font-size:19px}
       .lineage-grid{gap:34px}
-      .portrait{aspect-ratio:1/1}
+      .portrait{aspect-ratio:4/3}
+      .lineage-modal{padding:10px}
+      .lineage-modal-card{width:100%;max-height:94vh;border-radius:18px}
+      .lineage-gallery{min-height:330px;border-radius:18px 18px 0 0}
+      .lineage-gallery img{min-height:330px;max-height:48vh}
+      .lineage-modal-copy{padding:28px 22px 24px}
+      .lineage-modal-copy h3{font-size:38px}
+      .lineage-modal-close{top:10px;right:10px}
       .features{grid-template-columns:1fr}
       .studio-view{min-height:380px}
       .studio-panel{padding:30px}
@@ -519,26 +555,39 @@ header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba
     <div class="eyebrow">Uma linhagem de excelência</div>
     <h2>Do legado de Joseph Pilates à sua prática de hoje</h2>
     <p class="intro">O trabalho da Noremati é inspirado na linhagem original do método Pilates, transmitida de Joseph Pilates para Romana Kryzanowska e, em seguida, para Inelia Garcia, formando a base da formação de Fabiana Noremati.</p>
+
     <div class="lineage-grid">
       <article class="person reveal">
-        <img class="portrait" src="assets/img/joseph-pilates.webp" width="302" height="735" loading="lazy" decoding="async" alt="Joseph Pilates">
+        <div class="portrait-wrap">
+          <img class="portrait" src="assets/img/joseph-pilates.webp" width="302" height="735" loading="lazy" decoding="async" alt="Joseph Pilates">
+        </div>
         <h3>Joseph Pilates</h3>
         <div class="role">Criador do método</div>
-        <p><strong>1883 – 1967</strong><br>Desenvolveu a Contrologia, sistema que deu origem ao método Pilates. Em 1926, abriu com Clara Pilates seu studio em Nova York, onde aprimorou exercícios e aparelhos voltados ao controle, força, mobilidade e integração entre corpo e mente.</p>
+        <p><strong>1883 – 1967</strong><br>Criador da Contrologia, sistema que deu origem ao método Pilates e integrou controle, força, mobilidade e consciência corporal.</p>
+        <div class="lineage-more"><button type="button" data-lineage-open="joseph">Ver fotos e história</button></div>
       </article>
+
       <article class="person reveal">
-        <img class="portrait" src="assets/img/romana-kryzanowska.webp" width="440" height="560" loading="lazy" decoding="async" alt="Romana Kryzanowska">
+        <div class="portrait-wrap">
+          <img class="portrait" src="assets/img/lineage/romana-portrait.webp" width="378" height="480" loading="lazy" decoding="async" alt="Romana Kryzanowska">
+        </div>
         <h3>Romana Kryzanowska</h3>
         <div class="role">Discípula direta</div>
-        <p>Aluna de Joseph e Clara Pilates, tornou-se uma das principais responsáveis pela preservação e transmissão do método após a morte de Joseph. Dedicou décadas ao ensino do Pilates e à formação de novas gerações de instrutores, mantendo vivos os princípios e a tradição do método clássico.</p>
+        <p>Aluna de Joseph e Clara Pilates e uma das principais responsáveis pela preservação e transmissão da tradição clássica do método.</p>
+        <div class="lineage-more"><button type="button" data-lineage-open="romana">Ver fotos e história</button></div>
       </article>
+
       <article class="person reveal">
-        <img class="portrait" src="assets/img/inelia-garcia.webp" width="800" height="907" loading="lazy" decoding="async" alt="Inelia Garcia">
+        <div class="portrait-wrap">
+          <img class="portrait" src="assets/img/lineage/inelia-circle.webp" width="464" height="554" loading="lazy" decoding="async" alt="Inelia Garcia">
+        </div>
         <h3>Inelia Garcia</h3>
         <div class="role">3ª geração</div>
-        <p>Referência internacional em Pilates Clássico, iniciou sua certificação com Romana Kryzanowska em 1994. Em 2003, foi reconhecida por Romana como <em>Teacher of Teachers</em>, dedicando sua trajetória à formação de instrutores e à transmissão da linhagem clássica do método.</p>
+        <p>Referência internacional em Pilates Clássico, formada na tradição de Romana Kryzanowska e reconhecida como <em>Teacher of Teachers</em>.</p>
+        <div class="lineage-more"><button type="button" data-lineage-open="inelia">Ver fotos e história</button></div>
       </article>
     </div>
+
     <div class="lineage-end">O movimento continua.</div>
   </div>
 </section>
@@ -689,6 +738,30 @@ header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba
     </div>
   </div>
 </section>
+
+
+<div class="lineage-modal" id="lineageModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lineageModalTitle">
+  <div class="lineage-modal-card">
+    <button class="lineage-modal-close" type="button" aria-label="Fechar galeria" data-lineage-close>×</button>
+    <div class="lineage-modal-grid">
+      <div class="lineage-gallery">
+        <img id="lineageModalImage" src="" alt="">
+        <div class="lineage-gallery-nav" aria-label="Navegação da galeria">
+          <button type="button" aria-label="Foto anterior" data-lineage-prev>‹</button>
+          <button type="button" aria-label="Próxima foto" data-lineage-next>›</button>
+        </div>
+        <div class="lineage-gallery-count" id="lineageModalCount"></div>
+      </div>
+      <div class="lineage-modal-copy">
+        <div class="eyebrow">Linhagem do Pilates Clássico</div>
+        <h3 id="lineageModalTitle"></h3>
+        <div class="role" id="lineageModalRole"></div>
+        <p id="lineageModalText"></p>
+        <div class="lineage-modal-caption" id="lineageModalCaption"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 </main>
 
@@ -946,6 +1019,110 @@ header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba
 })();
 </script>
 
+
+
+<script>
+(function(){
+  const data = {
+    joseph: {
+      name: 'Joseph Pilates',
+      role: 'Criador do método · 1883–1967',
+      text: 'Joseph Pilates desenvolveu a Contrologia, sistema que deu origem ao método Pilates. Em 1926, abriu com Clara Pilates seu studio em Nova York, onde aprimorou exercícios e aparelhos voltados ao controle, força, mobilidade e integração entre corpo e mente.',
+      images: [
+        {src:'assets/img/joseph-pilates.webp', alt:'Joseph Pilates', caption:'Joseph Pilates — criador da Contrologia.'},
+        {src:'assets/img/lineage/joseph-class.webp', alt:'Joseph Pilates conduzindo uma aula em grupo', caption:'Joseph Pilates conduzindo uma prática em grupo.'},
+        {src:'assets/img/lineage/joseph-reformer.webp', alt:'Joseph Pilates praticando em aparelho do método', caption:'Joseph Pilates demonstrando o trabalho em aparelho.'}
+      ]
+    },
+    romana: {
+      name: 'Romana Kryzanowska',
+      role: 'Discípula direta de Joseph e Clara Pilates',
+      text: 'Aluna de Joseph e Clara Pilates, Romana Kryzanowska tornou-se uma das principais responsáveis pela preservação e transmissão do método após a morte de Joseph. Dedicou décadas ao ensino do Pilates e à formação de novas gerações de instrutores, mantendo vivos os princípios e a tradição do método clássico.',
+      images: [
+        {src:'assets/img/lineage/romana-portrait.webp', alt:'Retrato de Romana Kryzanowska', caption:'Romana Kryzanowska — uma das principais continuadoras da tradição clássica.'},
+        {src:'assets/img/lineage/romana-teaching.webp', alt:'Romana Kryzanowska ensinando no aparelho', caption:'Romana durante o trabalho de ensino no studio.'}
+      ]
+    },
+    inelia: {
+      name: 'Inelia Garcia',
+      role: '3ª geração da linhagem clássica',
+      text: 'Referência internacional em Pilates Clássico, Inelia Garcia iniciou sua certificação com Romana Kryzanowska em 1994. Em 2003, foi reconhecida por Romana como Teacher of Teachers, dedicando sua trajetória à formação de instrutores e à transmissão da linhagem clássica do método.',
+      images: [
+        {src:'assets/img/lineage/inelia-circle.webp', alt:'Inelia Garcia com Magic Circle', caption:'Inelia Garcia — referência internacional em Pilates Clássico.'},
+        {src:'assets/img/lineage/inelia-teaching.webp', alt:'Inelia Garcia orientando uma aluna', caption:'Inelia durante o trabalho de orientação e ensino.'}
+      ]
+    }
+  };
+
+  const modal = document.getElementById('lineageModal');
+  const image = document.getElementById('lineageModalImage');
+  const title = document.getElementById('lineageModalTitle');
+  const role = document.getElementById('lineageModalRole');
+  const textEl = document.getElementById('lineageModalText');
+  const count = document.getElementById('lineageModalCount');
+  const caption = document.getElementById('lineageModalCaption');
+  const openers = document.querySelectorAll('[data-lineage-open]');
+  const close = modal.querySelector('[data-lineage-close]');
+  const prev = modal.querySelector('[data-lineage-prev]');
+  const next = modal.querySelector('[data-lineage-next]');
+  let currentPerson = null;
+  let currentIndex = 0;
+  let lastFocus = null;
+
+  function render(){
+    if(!currentPerson) return;
+    const person = data[currentPerson];
+    const item = person.images[currentIndex];
+    image.src = item.src;
+    image.alt = item.alt;
+    title.textContent = person.name;
+    role.textContent = person.role;
+    textEl.textContent = person.text;
+    count.textContent = (currentIndex + 1) + ' / ' + person.images.length;
+    caption.textContent = item.caption;
+    const multiple = person.images.length > 1;
+    prev.style.visibility = multiple ? 'visible' : 'hidden';
+    next.style.visibility = multiple ? 'visible' : 'hidden';
+  }
+
+  function openModal(personKey, trigger){
+    currentPerson = personKey;
+    currentIndex = 0;
+    lastFocus = trigger || document.activeElement;
+    render();
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => close.focus(), 40);
+  }
+
+  function closeModal(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    if(lastFocus) lastFocus.focus();
+  }
+
+  function move(delta){
+    const items = data[currentPerson].images;
+    currentIndex = (currentIndex + delta + items.length) % items.length;
+    render();
+  }
+
+  openers.forEach(btn => btn.addEventListener('click', () => openModal(btn.dataset.lineageOpen, btn)));
+  close.addEventListener('click', closeModal);
+  prev.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+  modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+
+  document.addEventListener('keydown', e => {
+    if(!modal.classList.contains('is-open')) return;
+    if(e.key === 'Escape') closeModal();
+    if(e.key === 'ArrowLeft') move(-1);
+    if(e.key === 'ArrowRight') move(1);
+  });
+})();
+</script>
 
 </body>
 </html>
