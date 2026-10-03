@@ -105,8 +105,8 @@
       },
       {
         "@type": "Question",
-        "name": "Como faço para agendar minha primeira aula?",
-        "acceptedAnswer": { "@type": "Answer", "text": "É simples: clique em \"Falar com a Fabiana\" e converse diretamente pelo WhatsApp para tirar dúvidas e combinar o melhor dia e horário para você." }
+        "name": "Como faço para agendar minha primeira experiência?",
+        "acceptedAnswer": { "@type": "Answer", "text": "É simples: clique em \"Agendar primeira experiência\" e converse diretamente com a Fabiana pelo WhatsApp para tirar dúvidas e combinar o melhor dia e horário para você." }
       }
     ]
   }
@@ -454,7 +454,7 @@ header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba
       <li><a href="#contato">CONTATO</a></li>
     </ul>
     <div class="nav-actions">
-      <a class="btn" href="https://wa.me/5511981346510" data-booking-open>◉ AGENDE SUA AULA GRÁTIS</a>
+      <a class="btn" href="https://wa.me/5511981346510" data-booking-open>AGENDAR PRIMEIRA EXPERIÊNCIA</a>
       <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navlinks" aria-label="Abrir menu">
         <span></span><span></span><span></span>
       </button>
@@ -610,7 +610,7 @@ header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba
       <article class="step reveal"><span>02</span><h3>Conheça a proposta</h3><p>Entenda como funciona o Pilates Clássico e o acompanhamento da Noremati.</p></article>
       <article class="step reveal"><span>03</span><h3>Inicie sua prática</h3><p>Fabiana conduz o trabalho considerando seu momento, experiência e objetivos.</p></article>
     </div>
-    <div class="first-lesson-action reveal"><a class="btn" href="https://wa.me/5511981346510" data-booking-open>FALAR COM A FABIANA</a></div>
+    <div class="first-lesson-action reveal"><a class="btn" href="https://wa.me/5511981346510" data-booking-open>AGENDAR PRIMEIRA EXPERIÊNCIA</a></div>
   </div>
 </section>
 
@@ -656,8 +656,8 @@ header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba
         <p>O Pilates Clássico segue a sequência e os princípios originais criados por Joseph Pilates, priorizando a precisão do movimento antes da repetição — diferente de adaptações mais modernas do método.</p>
       </details>
       <details class="faq-item">
-        <summary>Como faço para agendar minha aula grátis?</summary>
-        <p>É simples: clique em "Agende sua aula grátis" e fale diretamente com a Fabiana pelo WhatsApp para combinar o melhor dia e horário.</p>
+        <summary>Como faço para agendar minha primeira experiência?</summary>
+        <p>É simples: clique em "Agendar primeira experiência" e fale diretamente com a Fabiana pelo WhatsApp para combinar o melhor dia e horário.</p>
       </details>
     </div>
   </div>
@@ -701,7 +701,7 @@ header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba
         <a href="#faq">Dúvidas frequentes</a>
         <a href="#classico">Conheça o Pilates Clássico</a>
         <a href="#studio">Conheça o Studio</a>
-        <a href="https://wa.me/5511981346510" data-booking-open>Agendar aula</a>
+        <a href="https://wa.me/5511981346510" data-booking-open>Agendar primeira experiência</a>
       </div>
     </div>
 
@@ -765,17 +765,17 @@ header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba
   </svg>
 </a>
 
-<a class="mobile-cta" href="https://wa.me/5511981346510" data-booking-open>FALAR COM A FABIANA</a>
+<a class="mobile-cta" href="https://wa.me/5511981346510" data-booking-open>AGENDAR PRIMEIRA EXPERIÊNCIA</a>
 
 <div class="booking-modal" id="bookingModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
   <div class="booking-card">
     <button class="booking-close" type="button" aria-label="Fechar" data-booking-close>×</button>
     <div class="booking-head">
       <div class="booking-kicker">Agendamento Noremati</div>
-      <h2 class="booking-title" id="bookingTitle">Agende sua aula</h2>
+      <h2 class="booking-title" id="bookingTitle">Agende sua primeira experiência</h2>
     </div>
     <div class="booking-body">
-      <p>Conte rapidamente o que você procura. A conversa continua direto no WhatsApp com a Fabiana, sem compromisso.</p>
+      <p>Conte rapidamente o que você procura. A Fabiana recebe seu objetivo e continua a conversa com você pelo WhatsApp.</p>
 
       <form id="bookingForm" class="booking-form" novalidate>
         <div class="booking-field">
@@ -794,12 +794,12 @@ header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba
           </select>
           <span class="booking-error" data-error-for="bookingObjetivo"></span>
         </div>
-        <button class="booking-btn primary" type="submit">Falar com a Fabiana no WhatsApp</button>
+        <button class="booking-btn primary" type="submit">Agendar primeira experiência</button>
       </form>
 
       <div class="booking-divider">ou</div>
       <div class="booking-actions">
-        <a class="booking-btn secondary" href="mailto:contato@noremati.com?subject=Agendamento%20de%20aula%20-%20Noremati">Prefiro por e-mail</a>
+        <a class="booking-btn secondary" href="mailto:contato@noremati.com?subject=Primeira%20experi%C3%AAncia%20-%20Noremati">Prefiro por e-mail</a>
       </div>
 
       <div class="booking-note">Ponta da Praia · Santos · SP · Segunda a Sexta, 8:00 às 17:00</div>
@@ -845,7 +845,7 @@ header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba
     if(!objetivoInput.value){ setError(objetivoInput,'Selecione o que você busca.'); valid = false; } else { setError(objetivoInput,''); }
     if(!valid) return;
 
-    const mensagem = 'Olá, Fabiana! Meu nome é ' + nomeInput.value.trim() + '. Conheci a Noremati pelo site e gostaria de conversar sobre Pilates Clássico.\n\n*Meu objetivo:* ' + objetivoInput.value + '\n\nPodemos conversar sobre a primeira aula?';
+    const mensagem = 'Olá, Fabiana! Meu nome é ' + nomeInput.value.trim() + '. Conheci a Noremati pelo site e gostaria de conhecer o Pilates Clássico.\n\n*Meu objetivo:* ' + objetivoInput.value + '\n\nGostaria de agendar minha primeira experiência na Noremati.';
     const url = 'https://wa.me/5511981346510?text=' + encodeURIComponent(mensagem);
     if(typeof gtag === 'function'){ gtag('event', 'generate_lead', { method: 'whatsapp', objective: objetivoInput.value }); }
     window.open(url, '_blank', 'noopener');
