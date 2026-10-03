@@ -13,8 +13,8 @@
     gtag('config', 'G-XXXXXXXXXX');
   </script>
 
-  <title>Noremati | Pilates Clássico em Ponta da Praia, Santos-SP</title>
-  <meta name="description" content="Pilates Clássico em Santos, na Ponta da Praia. Aulas personalizadas com Fabiana Noremati, mais de 15 anos de experiência e formação na linhagem clássica do método.">
+  <title>Pilates Clássico em Santos | Noremati - Ponta da Praia</title>
+  <meta name="description" content="Pilates Clássico na Ponta da Praia, em Santos. Atendimento personalizado com Fabiana Noremati, mais de 15 anos de experiência e prática fiel ao método clássico.">
   <link rel="canonical" href="https://noremati.com/">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="author" content="Noremati Pilates Clássico">
@@ -25,12 +25,15 @@
   <link rel="icon" type="image/webp" href="assets/img/logo.webp">
 
   <meta property="og:type" content="business.business">
-  <meta property="og:title" content="Noremati | Pilates Clássico">
-  <meta property="og:description" content="Pilates Clássico na Ponta da Praia, Santos-SP. Atendimento personalizado com Fabiana Noremati.">
+  <meta property="og:title" content="Pilates Clássico em Santos | Noremati">
+  <meta property="og:description" content="Pilates Clássico na Ponta da Praia, em Santos, com atendimento personalizado e mais de 15 anos de experiência.">
   <meta property="og:image" content="https://noremati.com/assets/img/hero-fabiana.webp">
+  <meta property="og:image:alt" content="Fabiana Noremati no Studio Noremati Pilates Clássico em Santos">
   <meta property="og:url" content="https://noremati.com/">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pilates Clássico em Santos | Noremati">
+  <meta name="twitter:description" content="Pilates Clássico na Ponta da Praia, em Santos, com atendimento personalizado e mais de 15 anos de experiência.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,10 +43,20 @@
   {
     "@context": "https://schema.org",
     "@type": "ExerciseGym",
+    "@id": "https://noremati.com/#studio",
     "name": "Noremati Pilates Clássico",
+    "description": "Studio de Pilates Clássico na Ponta da Praia, em Santos, com atendimento personalizado e prática baseada na tradição do método clássico.",
     "founder": { "@type": "Person", "name": "Fabiana Noremati" },
     "image": "https://noremati.com/assets/img/hero-fabiana.webp",
     "url": "https://noremati.com/",
+    "makesOffer": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Pilates Clássico",
+        "areaServed": "Santos, SP"
+      }
+    },
     "telephone": "+5511981346510",
     "email": "contato@noremati.com",
     "openingHoursSpecification": {
@@ -62,8 +75,7 @@
       "@type": "PostalAddress",
       "addressLocality": "Santos",
       "addressRegion": "SP",
-      "addressCountry": "BR",
-      "streetAddress": "Ponta da Praia"
+      "addressCountry": "BR"
     },
     "areaServed": [
       { "@type": "City", "name": "Santos" },
@@ -214,17 +226,23 @@
     .classic-grid{display:block;max-width:1100px;margin:0 auto}
     .classic-copy{text-align:center}
     .classic h2{font-size:64px;margin:10px auto 24px;max-width:900px}
-    .classic-copy>p{color:var(--muted);font-size:18px;line-height:1.55;max-width:860px;margin:0 auto}
-    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:46px;text-align:left}
+    .classic-copy>p{color:var(--muted);font-size:18px;line-height:1.6;max-width:860px;margin:0 auto}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px;text-align:left}
     .feature{border-top:1px solid var(--line);padding-top:20px}
     .feature strong{font-size:18px}
-    .feature p{font-size:14px;margin:8px 0 0;color:var(--muted);line-height:1.5}
+    .feature p{font-size:14px;margin:8px 0 0;color:var(--muted);line-height:1.55}
+    .equipment-system{margin-top:46px;padding:28px 30px;border:1px solid var(--line);border-radius:20px;background:#f8f0e4;text-align:left}
+    .equipment-system-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:22px}
+    .equipment-system h3{font-size:32px;line-height:1}
+    .equipment-system p{max-width:620px;margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+    .equipment-list{display:flex;gap:10px;flex-wrap:wrap}
+    .equipment-list span{padding:10px 14px;border-radius:999px;border:1px solid #d8c3a1;background:#fffaf1;color:#674b29;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
 
     /* Studio */
     .studio{background:#f4ede1}
-    .studio-head{max-width:760px;margin-bottom:38px}
+    .studio-head{max-width:820px;margin-bottom:38px}
     .studio-head h2{font-size:58px;margin:8px 0 14px}
-    .studio-head p{color:var(--muted);line-height:1.55}
+    .studio-head p{color:var(--muted);line-height:1.65;font-size:16px}
     .studio-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:stretch}
     .studio-view{border-radius:22px;overflow:hidden;min-height:520px}
     .studio-view img{width:100%;height:100%;object-fit:cover}
@@ -259,15 +277,12 @@
 
     /* Conversion sections */
     .btn-ghost{background:transparent;color:var(--gold-btn);border:1px solid var(--gold2);box-shadow:none}
-    .benefits{background:#fffdf8}
     .section-center{text-align:center;max-width:820px;margin:0 auto 44px}
     .section-center h2{font-size:56px;margin:8px 0 16px}
     .section-center>p{color:var(--muted);font-size:17px;line-height:1.6}
-    .benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
-    .benefit-item{border-top:1px solid var(--line);padding-top:20px}
-    .benefit-item>span,.step>span{color:var(--gold);font-size:11px;letter-spacing:.18em}
-    .benefit-item h3,.step h3{font-size:27px;line-height:1.05;margin:14px 0 9px}
-    .benefit-item p,.step p{color:var(--muted);font-size:14px;line-height:1.55;margin:0}
+    .step>span{color:var(--gold);font-size:11px;letter-spacing:.18em}
+    .step h3{font-size:27px;line-height:1.05;margin:14px 0 9px}
+    .step p{color:var(--muted);font-size:14px;line-height:1.55;margin:0}
     .audience{background:var(--dark);color:#fff}
     .audience-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}
     .audience-copy h2{font-size:54px;margin:10px 0 18px}
@@ -281,7 +296,6 @@
     .step{background:#fffaf1;border-radius:18px;padding:30px;min-height:190px}
     .first-lesson-action{text-align:center;margin-top:34px}
     @media(max-width:900px){
-      .benefit-grid{grid-template-columns:1fr 1fr}
       .audience-grid{grid-template-columns:1fr;gap:42px}
       .steps{grid-template-columns:1fr}
     }
@@ -289,8 +303,9 @@
       .hero-actions{flex-direction:column;align-items:stretch}
       .hero-actions .btn{justify-content:center}
       .hero-proof{display:grid;grid-template-columns:1fr 1fr}
-      .benefit-grid{grid-template-columns:1fr}
       .section-center h2,.audience-copy h2{font-size:40px}
+      .equipment-system{padding:24px 20px}
+      .equipment-system-head{align-items:flex-start;flex-direction:column;gap:10px}
       .audience-list>div{grid-template-columns:1fr;gap:7px}
     }
 
@@ -454,10 +469,7 @@
     }
   
     /* Conversion journey */
-    .conversion-trust{background:#fffaf1;padding:76px 0}.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.trust-item{padding:24px 20px;border-top:1px solid var(--gold2);background:rgba(255,255,255,.38)}.trust-item strong{display:block;font-family:"Cormorant Garamond",serif;font-size:28px;line-height:1;color:var(--ink);margin-bottom:8px}.trust-item span{font-size:13px;line-height:1.45;color:var(--muted)}
     .booking-field select{width:100%;padding:14px 42px 14px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font:inherit;appearance:auto}.booking-field select:focus{border-color:var(--gold);outline:none;box-shadow:0 0 0 3px rgba(167,122,52,.12)}
-    @media(max-width:900px){.trust-grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:620px){.conversion-trust{padding:60px 0}.trust-grid{grid-template-columns:1fr}.trust-item{padding:20px 18px}}
 
 /* Premium motion patch */
 :root{--motion-ease:cubic-bezier(.22,1,.36,1)}
@@ -473,9 +485,8 @@ header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba
 @media(hover:hover) and (pointer:fine){.person:hover .portrait{transform:translateY(-4px) scale(1.012);box-shadow:0 24px 48px rgba(51,38,23,.13)}.hero-photo:hover img{transform:scale(1.012)}.studio-view:hover img{transform:scale(1.018)}}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .85s var(--motion-ease),transform .85s var(--motion-ease)}
 .reveal.is-visible{opacity:1;transform:translateY(0)}
-.benefit-grid .reveal:nth-child(2),.steps .reveal:nth-child(2),.trust-grid .reveal:nth-child(2){transition-delay:.08s}
-.benefit-grid .reveal:nth-child(3),.steps .reveal:nth-child(3),.trust-grid .reveal:nth-child(3){transition-delay:.16s}
-.benefit-grid .reveal:nth-child(4),.trust-grid .reveal:nth-child(4){transition-delay:.24s}
+.steps .reveal:nth-child(2){transition-delay:.08s}
+.steps .reveal:nth-child(3){transition-delay:.16s}
 .whatsapp-float.motion-ready{animation:whatsappEntrance .65s var(--motion-ease) both}
 @keyframes whatsappEntrance{from{opacity:0;transform:translateY(14px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}header,.navlinks a,.btn,.portrait,.hero-photo img,.studio-view img,.reveal,.whatsapp-float{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
@@ -592,28 +603,14 @@ header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba
   </div>
 </section>
 
-<section class="benefits" id="beneficios">
-  <div class="wrap">
-    <div class="section-center reveal">
-      <div class="eyebrow">Movimento que evolui com você</div>
-      <h2>Uma prática completa para o corpo.</h2>
-      <p>O Pilates Clássico trabalha o corpo de forma integrada, com atenção à qualidade, ao controle e à progressão de cada movimento.</p>
-    </div>
-    <div class="benefit-grid">
-      <article class="benefit-item reveal"><span>01</span><h3>Força e estabilidade</h3><p>Desenvolvimento do corpo de forma integrada, com controle e consciência.</p></article>
-      <article class="benefit-item reveal"><span>02</span><h3>Mobilidade</h3><p>Movimentos conduzidos com precisão, amplitude e respeito às características de cada pessoa.</p></article>
-      <article class="benefit-item reveal"><span>03</span><h3>Consciência corporal</h3><p>Mais percepção sobre postura, respiração, alinhamento e qualidade do movimento.</p></article>
-      <article class="benefit-item reveal"><span>04</span><h3>Equilíbrio e coordenação</h3><p>Uma prática que integra concentração, controle, fluidez e precisão.</p></article>
-    </div>
-  </div>
-</section>
+
 
 <section class="audience">
   <div class="wrap audience-grid">
     <div class="audience-copy reveal">
       <div class="eyebrow eyebrow--light">Para quem é</div>
       <h2>Cada corpo começa de um ponto diferente.</h2>
-      <p>As aulas são conduzidas de acordo com o momento, a experiência e os objetivos de cada aluno — inclusive para quem nunca praticou Pilates.</p>
+      <p>As aulas de Pilates Clássico são conduzidas de acordo com o momento, a experiência e os objetivos de cada aluno — inclusive para quem nunca praticou.</p>
       <a class="btn" href="https://wa.me/5511981346510" data-booking-open>FALAR COM A FABIANA</a>
     </div>
     <div class="audience-list reveal">
@@ -628,14 +625,30 @@ header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba
 <section class="classic" id="classico">
   <div class="wrap classic-grid">
     <div class="classic-copy reveal">
-      <div class="eyebrow">O diferencial Noremati</div>
+      <div class="eyebrow">Pilates Clássico em Santos</div>
       <h2>Pilates como ele foi concebido.</h2>
-      <p>O Pilates Clássico preserva a lógica do método, a precisão dos movimentos e a integração entre mente e corpo. Na Noremati, a prática é conduzida com atenção individual e respeito ao ritmo de cada pessoa.</p>
+      <p>O Pilates Clássico preserva a estrutura, a sequência e os princípios do método desenvolvido por Joseph Pilates. Na Noremati, na Ponta da Praia, cada prática combina precisão, progressão e acompanhamento próximo.</p>
+
       <div class="features">
-        <div class="feature"><strong>Método original</strong><p>Exercícios organizados dentro da proposta clássica do Pilates.</p></div>
-        <div class="feature"><strong>Aparelhos clássicos</strong><p>Reformer, Cadillac, Chair e Barrel integrados à proposta clássica do método.</p></div>
-        <div class="feature"><strong>Precisão antes da repetição</strong><p>Qualidade de movimento e consciência corporal em primeiro lugar.</p></div>
-        <div class="feature"><strong>Acompanhamento próximo</strong><p>Aula pensada para o corpo, o momento e a evolução de cada aluno.</p></div>
+        <div class="feature"><strong>Método e progressão</strong><p>Os exercícios seguem uma lógica de evolução, respeitando experiência, controle e desenvolvimento de cada aluno.</p></div>
+        <div class="feature"><strong>Precisão no movimento</strong><p>Qualidade, controle, fluidez e consciência corporal vêm antes da repetição.</p></div>
+        <div class="feature"><strong>Atendimento personalizado</strong><p>A prática é conduzida de acordo com o momento, os objetivos e a evolução de cada pessoa.</p></div>
+      </div>
+
+      <div class="equipment-system">
+        <div class="equipment-system-head">
+          <div>
+            <div class="eyebrow">Sistema clássico</div>
+            <h3>Os aparelhos fazem parte do método.</h3>
+          </div>
+          <p>Reformer, Cadillac, Step Chair e Barrel são utilizados de forma integrada à proposta do Pilates Clássico — não como exercícios isolados, mas como parte de um sistema.</p>
+        </div>
+        <div class="equipment-list" aria-label="Equipamentos de Pilates Clássico">
+          <span>Reformer</span>
+          <span>Cadillac</span>
+          <span>Step Chair</span>
+          <span>Barrel</span>
+        </div>
       </div>
     </div>
   </div>
@@ -644,18 +657,18 @@ header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba
 <section class="studio" id="studio">
   <div class="wrap">
     <div class="studio-head">
-      <div class="eyebrow">Sobre o studio</div>
-      <h2>Um espaço para o seu bem-estar.</h2>
-      <p>O Studio Noremati, na Ponta da Praia em Santos-SP, foi criado para oferecer um atendimento personalizado, em um ambiente acolhedor e seguro, com foco na saúde, no movimento consciente e na qualidade de vida.</p>
+      <div class="eyebrow">Studio Noremati · Ponta da Praia</div>
+      <h2>Um espaço dedicado ao Pilates Clássico em Santos.</h2>
+      <p>O Studio Noremati foi pensado para uma prática próxima, técnica e individualizada. Um ambiente acolhedor na Ponta da Praia, com estrutura para o sistema clássico e atenção à evolução de cada aluno.</p>
     </div>
     <div class="studio-layout">
       <div class="studio-view reveal">
         <img src="assets/img/studio-view.webp" width="1200" height="1600" loading="lazy" decoding="async" alt="Studio Noremati na Ponta da Praia">
       </div>
       <div class="studio-panel reveal">
-        <div class="eyebrow">Movimento com propósito</div>
-        <h3>Presença, técnica e cuidado.</h3>
-        <p>Mais do que exercício, o Pilates Clássico é uma prática de construção contínua. Cada aula busca desenvolver força, mobilidade, controle e autonomia com acompanhamento próximo.</p>
+        <div class="eyebrow">A experiência Noremati</div>
+        <h3>Presença, técnica e evolução.</h3>
+        <p>Cada aula conecta método, aparelhos e acompanhamento próximo. A proposta é evoluir com consistência, respeitando o corpo, o ritmo e os objetivos de cada aluno.</p>
         <div class="studio-sign">Fabiana Noremati<small>Fundadora e instrutora</small></div>
       </div>
     </div>
@@ -678,21 +691,7 @@ header.is-scrolled{background:rgba(255,253,248,.985);box-shadow:0 10px 32px rgba
   </div>
 </section>
 
-<section class="conversion-trust" aria-label="Por que escolher a Noremati">
-  <div class="wrap">
-    <div class="section-center reveal">
-      <div class="eyebrow">Confiança para começar</div>
-      <h2>Tradição, experiência e atenção a cada aluno.</h2>
-      <p>Na Noremati, sua prática une a essência do Pilates Clássico a um acompanhamento próximo, em um ambiente pensado para evoluir com segurança e consistência.</p>
-    </div>
-    <div class="trust-grid">
-      <div class="trust-item reveal"><strong>+15 anos</strong><span>de experiência profissional</span></div>
-      <div class="trust-item reveal"><strong>Linhagem clássica</strong><span>Joseph → Romana → Inelia → Fabiana</span></div>
-      <div class="trust-item reveal"><strong>Personalizado</strong><span>atenção ao seu momento e objetivos</span></div>
-      <div class="trust-item reveal"><strong>Santos · SP</strong><span>atendimento na Ponta da Praia</span></div>
-    </div>
-  </div>
-</section>
+
 
 <section class="faq" id="faq">
   <div class="wrap">
